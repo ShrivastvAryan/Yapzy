@@ -17,7 +17,7 @@ export const registerChatHandlers = (io: Server, socket: Socket) => {
     }
   };
 
-  // Bind the functions to the socket events
+  // socket events
   socket.on('join_room', joinRoom);
   socket.on('send_message', sendMessage);
 };

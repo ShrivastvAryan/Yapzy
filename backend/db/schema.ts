@@ -8,6 +8,7 @@ export const users = pgTable('users', {
   username: text('username').notNull().unique(),
   avatarUrl: text('avatar_url'),
   createdAt: timestamp('created_at').defaultNow().notNull(),
+  refreshToken: text('refresh_token'),
 });
 
 // 2. CHAT ROOMS

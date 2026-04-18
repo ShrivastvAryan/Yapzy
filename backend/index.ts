@@ -4,11 +4,20 @@ import { users } from "./db/schema";
 import { db } from "./db";
 import { initSocket } from "./lib/socket";
 import authRoutes from "./routes/auth.routes";
+import cookieParser from "cookie-parser";
+import cors from 'cors';
 
 const app = express();
 const port = 8000;
 
+app.use(cors({
+  origin: "http://localhost:3000", // Your Frontend URL
+  credentials: true,               // Required to allow cookies/Refresh Tokens
+  methods: ["GET", "POST", "PUT", "DELETE"],
+}));
+
 app.use(express.json());
+app.use(cookieParser());
 
 const httpServer = app.listen(port);
 initSocket(httpServer);
